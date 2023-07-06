@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='api-clients',
+    name='api_clients',
     version='0.0.2',
     author='ChatGPT and Denis Ustinov',
     author_email='revers-06-checkup@icloud.com',

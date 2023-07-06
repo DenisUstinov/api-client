@@ -33,8 +33,8 @@ pip install git+https://github.com/DenisUstinov/api-clients.git --use-pep517
 Импортируйте соответствующий клиент в свой код:
 
 ```python
-from app.websocket.client import Client as WebSocketClient
-from app.rest.client import Client as RestClient
+from my_clients.websocket.client import Client as WebSocketClient
+from my_clients.rest.client import Client as RestClient
 ```
 
 

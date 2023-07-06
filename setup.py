@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='api-client',
-    version='0.0.1',
+    version='0.1.1',
     author='ChatGPT and Denis Ustinov',
     author_email='revers-06-checkup@icloud.com',
     description='A Python package for working with API',
@@ -12,18 +12,11 @@ setup(
     license='MIT',
     packages=find_packages(),
     install_requires=['websockets', 'backoff', 'aiohttp'],
-    python_requires='>=3.6',
+    python_requires='>=3.11',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 1 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: Implementation :: CPython',
-        'Programming Language :: Python :: Implementation :: PyPy'
+        'Programming Language :: Python :: 3.11'
     ],
 )
-

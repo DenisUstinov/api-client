@@ -8,7 +8,7 @@ class Client:
         self.session = aiohttp.ClientSession()
 
     @backoff.on_exception(backoff.expo, aiohttp.ClientError, max_tries=5)
-    async def request(self, url: str, method: str = 'GET', headers: dict = None, data: dict = None) -> dict:
+    async def request(self, method: str, url: str, headers: dict = None, data: dict = None) -> dict:
         try:
             async with self.session.request(method, url, headers=headers, data=data) as response:
                 try:

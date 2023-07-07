@@ -14,9 +14,9 @@ setup(
     install_requires=['websockets', 'backoff', 'aiohttp'],
     python_requires='>=3.11',
     classifiers=[
-        'Development Status :: 1 - Alpha',
+        'Development Status :: 1 - Planning',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
+        'License :: MIT License',
         'Programming Language :: Python :: 3.11'
     ],
 )

@@ -2,23 +2,14 @@ import logging
 import backoff
 import aiohttp
 
-
-class RequestError(Exception):
-    def __init__(self, message, url=None, method=None, request_body=None):
-        super().__init__(message)
-        self.url = url
-        self.method = method
-        self.request_body = request_body
+from my_clients import RequestError
+from my_clients import setup_logger
 
 
 class Client:
     def __init__(self) -> None:
         self.session = aiohttp.ClientSession()
-        self.logger = logging.getLogger(__name__)
-        self.logger.setLevel(logging.ERROR)
-        self.file_handler = logging.FileHandler('errors.log')
-        self.file_handler.setLevel(logging.ERROR)
-        self.logger.addHandler(self.file_handler)
+        self.logger = setup_logger(__name__, 'errors.log')
 
     @backoff.on_exception(backoff.expo, aiohttp.ClientError, max_tries=5)
     async def request(self, method: str, url: str, headers: dict = None, data: dict = None):

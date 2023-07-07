@@ -6,22 +6,8 @@ import websockets.exceptions
 
 from typing import Dict, Any, Callable, Coroutine
 
-
-class RequestError(Exception):
-    """Exception raised for request errors.
-
-    Attributes:
-        message (str): The error message.
-        url (str): The URL that caused the error.
-        method (str): The request method.
-        request_body (Any): The request body.
-    """
-
-    def __init__(self, message: str, url: str = None, method: str = None, request_body: Any = None):
-        super().__init__(message)
-        self.url = url
-        self.method = method
-        self.request_body = request_body
+from my_clients import RequestError
+from my_clients import setup_logger
 
 
 class Client:
@@ -40,11 +26,7 @@ class Client:
             response_handler (Callable[[dict], Coroutine]): The coroutine function to handle responses.
         """
         self.response_handler = response_handler
-        self.logger = logging.getLogger(__name__)
-        self.logger.setLevel(logging.ERROR)
-        self.file_handler = logging.FileHandler('errors.log')
-        self.file_handler.setLevel(logging.ERROR)
-        self.logger.addHandler(self.file_handler)
+        self.logger = setup_logger(__name__, 'errors.log')
 
     @backoff.on_exception(backoff.expo, websockets.exceptions.WebSocketException, max_tries=5)
     async def subscribe_and_listen(self, data: Dict[str, Any]) -> None:

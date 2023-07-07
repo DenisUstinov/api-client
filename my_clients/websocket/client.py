@@ -1,3 +1,5 @@
+import json
+
 import backoff
 import websockets
 import websockets.exceptions
@@ -15,5 +17,5 @@ class Client:
             for message in data['init_messages']:
                 await websocket.send(message)
             while True:
-                message = await websocket.recv()
-                await self.response_handler(message)
+                response = await websocket.recv()
+                await self.response_handler(json.loads(response))

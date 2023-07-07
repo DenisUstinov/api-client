@@ -1,18 +1,24 @@
-import backoff
 import aiohttp
+import backoff
 
 
 class Client:
-    def __init__(self) -> None:
-        self.session = aiohttp.ClientSession()
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance.session = aiohttp.ClientSession()
+        return cls._instance
 
     @backoff.on_exception(backoff.expo, aiohttp.ClientError, max_tries=5)
     async def request(self, method: str, url: str, headers: dict = None, data: dict = None):
         async with self.session.request(method, url, headers=headers, data=data) as response:
-            return await response.text()
+            return await response.json()
 
     async def close(self):
-        await self.session.close()
+        if self.session is not None and not self.session.closed:
+            await self.session.close()
 
     async def __aenter__(self):
         return self

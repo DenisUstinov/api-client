@@ -1,6 +1,6 @@
 # My Clients
 
-## Краткое описание проекта или пакета
+## Краткое описание проекта
 
 Проект My Clients представляет собой две клиентские библиотеки для взаимодействия с веб-серверами посредством WebSocket и REST протоколов. Библиотеки предоставляют удобные методы для отправки запросов и обработки ответов, а также поддерживают повторные попытки соединения в случае возникновения ошибок.
 
@@ -8,13 +8,13 @@
 
 My Clients представлен двумя файлами: api-clients/websocket/client.py и api-clients/rest/client.py. Каждый файл содержит реализацию соответствующего клиента.
 
-### WebSocket Client (api-clients/websocket/client.py):
+### WebSocket Client (my-clients/websocket/client.py):
 
 Позволяет подключаться к WebSocket серверу и ожидать приема сообщений
 Поддерживает отправку инициализационных сообщений при подключении
 Обрабатывает полученные сообщения с помощью указанного обработчика
 
-### REST Client (api-clients/rest/client.py):
+### REST Client (my-clients/rest/client.py):
 
 Позволяет отправлять HTTP-запросы на указанный URL
 Поддерживает различные HTTP-методы (GET, POST и др.)
@@ -23,7 +23,7 @@ My Clients представлен двумя файлами: api-clients/websock
 ## Установка
 Вы можете установить exmo с помощью pip из GitHub, выполнив следующую команду:
 ```bash
-pip install git+https://github.com/DenisUstinov/api-clients.git --use-pep517
+pip install git+https://github.com/DenisUstinov/my-clients.git --use-pep517
 ```
 
 ## Использование
@@ -67,7 +67,7 @@ await websocket_client.close()
 
 ## Документация
 
-Полная документация проекта My Clients доступна на [ссылке](https://github.com/DenisUstinov/api-clients/blob/main/README.md).
+Полная документация проекта My Clients доступна на [ссылке](https://github.com/DenisUstinov/my-clients/blob/main/README.md).
 
 ## Лицензия
 

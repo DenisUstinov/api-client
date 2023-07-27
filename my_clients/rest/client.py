@@ -11,7 +11,7 @@ class Client:
             cls._instance.session = aiohttp.ClientSession()
         return cls._instance
 
-    @backoff.on_exception(backoff.expo, aiohttp.ClientError, max_tries=5)
+    @backoff.on_exception(backoff.expo, aiohttp.ClientError, max_tries=3)
     async def request(self, method: str, url: str, headers: dict = None, data: dict = None):
         async with self.session.request(method, url, headers=headers, data=data) as response:
             return await response.json()

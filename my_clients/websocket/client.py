@@ -10,7 +10,7 @@ class Client:
         self.response_handler = response_handler
 
     @backoff.on_exception(backoff.expo, websockets.exceptions.WebSocketException, max_tries=3)
-    async def subscribe_and_listen(self, data: Dict[str, Any]) -> None:
+    async def request(self, data: Dict[str, Any]) -> None:
         async with websockets.connect(data['url']) as websocket:
             for message in data['init_messages']:
                 await websocket.send(message)

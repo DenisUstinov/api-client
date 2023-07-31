@@ -14,7 +14,7 @@ class Client:
     @backoff.on_exception(backoff.expo, aiohttp.ClientError, max_tries=3)
     async def request(self, method: str, url: str, headers: dict = None, data: dict = None):
         async with self.session.request(method, url, headers=headers, data=data) as response:
-            return await response.json()
+            return await response.text()
 
     async def close(self):
         if self.session is not None and not self.session.closed:

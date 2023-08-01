@@ -6,22 +6,23 @@
 
 ## Описание
 
-My Clients представлен двумя файлами: api-clients/websocket/client.py и api-clients/rest/client.py. Каждый файл содержит реализацию соответствующего клиента.
+My Clients представлен двумя файлами: my_clients/websocket/client.py и my_clients/rest/client.py. Каждый файл содержит реализацию соответствующего клиента.
 
-### WebSocket Client (my-clients/websocket/client.py):
+## WebSocket Client (my_clients/websocket/client.py):
 
-Позволяет подключаться к WebSocket серверу и ожидать приема сообщений
-Поддерживает отправку инициализационных сообщений при подключении
-Обрабатывает полученные сообщения с помощью указанного обработчика
+* Позволяет подключаться к WebSocket серверу и ожидать приема сообщений.
+* Поддерживает отправку инициализационных сообщений при подключении.
+* Обрабатывает полученные сообщения с помощью указанного обработчика.
 
-### REST Client (my-clients/rest/client.py):
+## REST Client (my_clients/rest/client.py):
 
-Позволяет отправлять HTTP-запросы на указанный URL
-Поддерживает различные HTTP-методы (GET, POST и др.)
-Обрабатывает полученные ответы в формате JSON
+* Позволяет отправлять HTTP-запросы на указанный URL.
+* Поддерживает различные HTTP-методы (GET, POST и др.).
 
 ## Установка
-Вы можете установить exmo с помощью pip из GitHub, выполнив следующую команду:
+
+Вы можете установить My Clients с помощью pip из GitHub, выполнив следующую команду:
+
 ```bash
 pip install git+https://github.com/DenisUstinov/my-clients.git --use-pep517
 ```
@@ -48,7 +49,7 @@ rest_client = RestClient()
 
 Используйте метод subscribe_and_listen для подключения к WebSocket серверу и прослушивания сообщений:
 ```python
-await websocket_client.subscribe_and_listen(data)
+await websocket_client.request(data)
 ```
 
 Для REST клиента:
